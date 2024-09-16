@@ -1,0 +1,13 @@
+{
+	"name": "finance-duck",
+	"version": "1.0.0",
+	"main": "main.js",
+	"scripts": {
+		"test": "electron ."
+	},
+	"author": "SturmEnte",
+	"license": "GPL-3.0-only",
+	"devDependencies": {
+		"electron": "^32.1.0"
+	}
+}
