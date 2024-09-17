@@ -57,10 +57,10 @@ main {
 <!-- Global styling -->
 <style>
 :root {
-	--background-pri: #5e6472;
-	--background-sec: #aed9e0;
+	--background-pri: #2a3244;
+	--background-sec: #8ed7e2;
 	--accent-one: #b8f2e6;
-	--accent-two: #faf3dd;
+	--accent-two: #f8e39d;
 	--accent-three: #ffa69e;
 	--font-col: #fff;
 }
