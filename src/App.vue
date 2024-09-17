@@ -13,3 +13,20 @@
 </template>
 
 <style scoped></style>
+
+<style>
+* {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 300;
+}
+
+body,
+#app {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+</style>
