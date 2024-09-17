@@ -5,7 +5,7 @@
 		<div id="title">Finance Duck</div>
 		<nav>
 			<RouterLink to="/">Home</RouterLink>
-			<RouterLink to="/test">Test</RouterLink>
+			<RouterLink to="/accounts">Accounts</RouterLink>
 		</nav>
 	</header>
 	<main>
