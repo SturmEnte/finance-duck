@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Account from "../components/Account.vue";
+import AddAccount from "../components/AddAccount.vue";
 
 // Testing data
 const accounts = [
@@ -52,6 +53,9 @@ const accounts = [
 	<div id="accounts">
 		<Account v-for="account in accounts" :key="account.id" :account="account" />
 	</div>
+	<div id="add-account-container">
+		<AddAccount />
+	</div>
 </template>
 
 <style scoped>
@@ -64,6 +68,7 @@ const accounts = [
 	align-items: stretch;
 	gap: 20px;
 	padding: 20px;
+	padding-bottom: 10px;
 	box-sizing: border-box;
 	overflow-x: auto;
 }
@@ -71,5 +76,16 @@ const accounts = [
 #accounts > * {
 	flex: 1 1 auto; /* Allow elements to grow and shrink as needed */
 	min-width: 200px; /* Set a minimum width to ensure elements are not too small */
+}
+
+#add-account-container {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	padding-top: 10px;
+	box-sizing: border-box;
 }
 </style>
