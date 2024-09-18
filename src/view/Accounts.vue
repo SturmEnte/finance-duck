@@ -70,7 +70,7 @@ function invertScroll(event) {
 <style scoped>
 #accounts {
 	width: 100%;
-	height: 50%;
+	height: 60%;
 	display: flex;
 	justify-content: space-around;
 	align-items: stretch;
@@ -102,7 +102,7 @@ function invertScroll(event) {
 
 #add-account-container {
 	width: 100%;
-	height: 50%;
+	height: 40%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
