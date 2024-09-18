@@ -20,5 +20,7 @@
 	height: 10rem;
 
 	border-radius: 100%;
+
+	user-select: none;
 }
 </style>
