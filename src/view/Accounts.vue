@@ -73,6 +73,20 @@ const accounts = [
 	overflow-x: auto;
 }
 
+#accounts::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+#accounts::-webkit-scrollbar-thumb {
+	background-color: var(--background-sec);
+	border-radius: var(--corner-radius);
+}
+
+#accounts::-webkit-scrollbar-track {
+	background: transparent;
+}
+
 #accounts > * {
 	flex: 1 1 auto; /* Allow elements to grow and shrink as needed */
 	min-width: 200px; /* Set a minimum width to ensure elements are not too small */
