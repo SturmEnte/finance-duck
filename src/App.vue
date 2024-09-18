@@ -27,7 +27,7 @@ header {
 
 #title {
 	margin-right: 50px;
-	font-size: 2.2rem;
+	font-size: 1.6rem;
 }
 
 nav {
@@ -63,9 +63,10 @@ main {
 	--accent-two: #f8e39d;
 	--accent-three: #ffa69e;
 	--font-col: #fff;
-}
+	--font-col-dark: #868686;
 
-#app {
+	--corner-radius: 15px;
+
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 300;
 	font-size: 24px;
