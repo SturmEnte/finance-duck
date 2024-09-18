@@ -43,7 +43,7 @@ nav * {
 }
 
 nav .router-link-active {
-	color: var(--accent-two);
+	color: var(--accent);
 	font-weight: 500;
 }
 
@@ -59,9 +59,12 @@ main {
 :root {
 	--background-pri: #2a3244;
 	--background-sec: #8ed7e2;
-	--accent-one: #b8f2e6;
-	--accent-two: #f8e39d;
-	--accent-three: #ffa69e;
+
+	--accent: #f8e39d;
+
+	--font-col-green: #b8f2e6;
+	--font-col-red: #ffa69e;
+
 	--font-col: #fff;
 	--font-col-dark: #868686;
 
