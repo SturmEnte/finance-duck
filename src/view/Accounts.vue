@@ -2,6 +2,8 @@
 import Account from "../components/accounts/Account.vue";
 import AddAccount from "../components/accounts/AddAccount.vue";
 
+import DeleteAccountPopup from "../components/accounts/DeleteAccountPopup.vue";
+
 // Testing data
 const accounts = [
 	{
@@ -53,11 +55,15 @@ function invertScroll(event) {
 	const accountsElement = document.getElementById("accounts");
 	accountsElement?.scroll({ left: accountsElement.scrollLeft + event.deltaY, behavior: "smooth" });
 }
+
+function deleteAccount(accountId: number) {
+	console.log(`Deleting account with ID ${accountId}`);
+}
 </script>
 
 <template>
 	<div id="accounts" @wheel="invertScroll">
-		<Account v-for="account in accounts" :key="account.id" :account="account" />
+		<Account v-for="account in accounts" :key="account.id" :account="account" @delete-account="deleteAccount(account.id)" />
 	</div>
 	<div id="add-account-container">
 		<AddAccount />
