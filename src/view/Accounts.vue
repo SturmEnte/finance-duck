@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useTemplateRef, ref, onMounted } from "vue";
+
 import Account from "../components/Account.vue";
 import AddAccount from "../components/AddAccount.vue";
+import { RefSymbol } from "@vue/reactivity";
 
 // Testing data
 const accounts = [
@@ -47,10 +50,16 @@ const accounts = [
 		currency: "€",
 	},
 ];
+
+function invertScroll(event) {
+	event.preventDefault();
+	const accountsElement = document.getElementById("accounts");
+	accountsElement?.scroll({ left: accountsElement.scrollLeft + event.deltaY, behavior: "smooth" });
+}
 </script>
 
 <template>
-	<div id="accounts">
+	<div id="accounts" @wheel="invertScroll">
 		<Account v-for="account in accounts" :key="account.id" :account="account" />
 	</div>
 	<div id="add-account-container">
@@ -63,7 +72,6 @@ const accounts = [
 	width: 100%;
 	height: 50%;
 	display: flex;
-	/* flex-wrap: wrap; */
 	justify-content: space-around;
 	align-items: stretch;
 	gap: 20px;
