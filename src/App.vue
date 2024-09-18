@@ -1,22 +1,28 @@
 <script setup lang="ts"></script>
 
 <template>
-	<header>
-		<div id="title">Finance Duck</div>
-		<nav>
-			<RouterLink to="/">Home</RouterLink>
-			<RouterLink to="/accounts">Accounts</RouterLink>
-		</nav>
-	</header>
-	<main>
-		<RouterView />
-	</main>
+	<div id="app-container">
+		<header>
+			<div id="title">Finance Duck</div>
+			<nav>
+				<RouterLink to="/">Home</RouterLink>
+				<RouterLink to="/accounts">Accounts</RouterLink>
+			</nav>
+		</header>
+		<main>
+			<RouterView />
+		</main>
+	</div>
 </template>
 
 <style scoped>
+#app-container {
+	--header-height: 100px;
+}
+
 header {
 	widows: 100vw;
-	height: 100px;
+	height: var(--header-height);
 	background: var(--background-sec);
 	display: flex;
 	justify-content: flex-start;
@@ -48,8 +54,8 @@ nav .router-link-active {
 }
 
 main {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: calc(100vh - var(--header-height));
 	background: var(--background-pri);
 }
 </style>
