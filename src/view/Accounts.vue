@@ -49,13 +49,27 @@ const accounts = [
 </script>
 
 <template>
-	<div id="container">
+	<div id="accounts">
 		<Account v-for="account in accounts" :key="account.id" :account="account" />
 	</div>
 </template>
 
 <style scoped>
-#container {
+#accounts {
+	width: 100%;
+	height: 50%;
 	display: flex;
+	/* flex-wrap: wrap; */
+	justify-content: space-around;
+	align-items: stretch;
+	gap: 20px;
+	padding: 20px;
+	box-sizing: border-box;
+	overflow-x: auto;
+}
+
+#accounts > * {
+	flex: 1 1 auto; /* Allow elements to grow and shrink as needed */
+	min-width: 200px; /* Set a minimum width to ensure elements are not too small */
 }
 </style>
