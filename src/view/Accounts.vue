@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useTemplateRef, ref, onMounted } from "vue";
 
-import Account from "../components/Account.vue";
-import AddAccount from "../components/AddAccount.vue";
+import Account from "../components/accounts/Account.vue";
+import AddAccount from "../components/accounts/AddAccount.vue";
 import { RefSymbol } from "@vue/reactivity";
 
 // Testing data
