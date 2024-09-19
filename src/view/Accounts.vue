@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import Account from "../components/accounts/Account.vue";
 import AddAccount from "../components/accounts/AddAccount.vue";
 
 import DeleteAccountPopup from "../components/accounts/DeleteAccountPopup.vue";
 
 // Testing data
-const accounts = [
+let accounts = [
 	{
 		id: 1,
 		name: "Account 1",
@@ -64,6 +66,9 @@ const accounts = [
 	},
 ];
 
+let isDeletePopupVisible = ref(false);
+let currentProcessedAccountId = -1;
+
 function invertScroll(event) {
 	event.preventDefault();
 	const accountsElement = document.getElementById("accounts");
@@ -71,7 +76,18 @@ function invertScroll(event) {
 }
 
 function deleteAccount(accountId: number) {
-	console.log(`Deleting account with ID ${accountId}`);
+	console.log("Deleting account with id:", accountId);
+	isDeletePopupVisible.value = true;
+	currentProcessedAccountId = accountId;
+}
+
+function deleteAccountPopupResult(result: boolean) {
+	console.log("Result", result);
+	isDeletePopupVisible.value = false;
+	if (result) {
+		accounts = accounts.filter((account) => account.id !== currentProcessedAccountId);
+	}
+	currentProcessedAccountId = -1;
 }
 </script>
 
@@ -82,6 +98,8 @@ function deleteAccount(accountId: number) {
 	<div id="add-account-container">
 		<AddAccount />
 	</div>
+
+	<DeleteAccountPopup v-if="isDeletePopupVisible" @result="deleteAccountPopupResult" />
 </template>
 
 <style scoped>
