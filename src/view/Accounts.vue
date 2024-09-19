@@ -48,6 +48,20 @@ const accounts = [
 		balance: 6000,
 		currency: "€",
 	},
+	{
+		id: 6,
+		name: "Account 6",
+		description: "Eiusmod tempor",
+		balance: 6000,
+		currency: "€",
+	},
+	{
+		id: 6,
+		name: "Account 6",
+		description: "Eiusmod tempor",
+		balance: 6000,
+		currency: "€",
+	},
 ];
 
 function invertScroll(event) {
@@ -99,8 +113,10 @@ function deleteAccount(accountId: number) {
 }
 
 #accounts > * {
-	flex: 1 1 auto; /* Allow elements to grow and shrink as needed */
-	min-width: 200px; /* Set a minimum width to ensure elements are not too small */
+	--width: 280px;
+	width: var(--width);
+	max-width: var(--width);
+	min-width: var(--width);
 }
 
 #add-account-container {
