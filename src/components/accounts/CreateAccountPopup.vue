@@ -75,7 +75,7 @@ button {
 	margin: 0 12px;
 }
 
-#confirm {
+#create {
 	background-color: var(--font-col-green);
 }
 
