@@ -4,6 +4,7 @@ import { ref } from "vue";
 import Account from "../components/accounts/Account.vue";
 import AddAccount from "../components/accounts/AddAccount.vue";
 
+import CreateAccountPopup from "../components/accounts/CreateAccountPopup.vue";
 import DeleteAccountPopup from "../components/accounts/DeleteAccountPopup.vue";
 
 // Testing data
@@ -89,6 +90,30 @@ function deleteAccountPopupResult(result: boolean) {
 	}
 	currentProcessedAccountId = -1;
 }
+
+let isCreatePopupVisible = ref(false);
+
+function openCreateAccountPopup() {
+	console.log("Open create account popup");
+	isCreatePopupVisible.value = true;
+}
+
+function createAccountPopupResult(createAccount: boolean, name: string, description: string, balance: number) {
+	if (!createAccount) {
+		isCreatePopupVisible.value = false;
+		return;
+	}
+
+	const account = {
+		id: accounts.length + 1,
+		name,
+		description,
+		balance,
+		currency: "€",
+	};
+
+	accounts.push(account);
+}
 </script>
 
 <template>
@@ -96,9 +121,10 @@ function deleteAccountPopupResult(result: boolean) {
 		<Account v-for="account in accounts" :key="account.id" :account="account" @delete-account="deleteAccount(account.id)" />
 	</div>
 	<div id="add-account-container">
-		<AddAccount />
+		<AddAccount @click="openCreateAccountPopup" />
 	</div>
 
+	<CreateAccountPopup v-if="isCreatePopupVisible" @result="createAccountPopupResult" />
 	<DeleteAccountPopup v-if="isDeletePopupVisible" @result="deleteAccountPopupResult" />
 </template>
 
