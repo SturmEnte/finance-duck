@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 const emit = defineEmits(["result"]);
 
+const name = ref("");
+const description = ref("");
+const startingBalance = ref(0);
+
 function result(confirmed: boolean) {
-	emit("result", confirmed);
+	emit("result", confirmed, name.value, description.value, startingBalance.value);
+	name.value = "";
+	description.value = "";
+	startingBalance.value = 0;
 }
 </script>
 
@@ -11,11 +20,11 @@ function result(confirmed: boolean) {
 		<div id="popup">
 			<div id="inputs">
 				<label>Name</label>
-				<input type="text" />
+				<input v-model="name" type="text" />
 				<label>Description</label>
-				<input type="text" />
+				<input v-model="description" type="text" />
 				<label>Starting Balance</label>
-				<input type="number" />
+				<input v-model="startingBalance" type="number" />
 			</div>
 			<div id="buttons">
 				<button @click="result(true)" id="create">Create</button>
@@ -55,6 +64,16 @@ function result(confirmed: boolean) {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+}
+
+input {
+	border: none;
+	border-radius: var(--corner-radius);
+	background: var(--accent);
+	font-size: 1rem;
+	box-sizing: border-box;
+	padding-left: 0.5rem;
+	color: var(--font-col-dark);
 }
 
 #buttons {

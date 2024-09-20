@@ -98,7 +98,9 @@ function openCreateAccountPopup() {
 	isCreatePopupVisible.value = true;
 }
 
-function createAccountPopupResult(createAccount: boolean, name: string, description: string, balance: number) {
+function createAccountPopupResult(createAccount: boolean, name: string, description: string, startingBalance: number) {
+	console.log("Create account", createAccount, name, description, startingBalance);
+
 	if (!createAccount) {
 		isCreatePopupVisible.value = false;
 		return;
@@ -108,11 +110,12 @@ function createAccountPopupResult(createAccount: boolean, name: string, descript
 		id: accounts.length + 1,
 		name,
 		description,
-		balance,
+		balance: startingBalance,
 		currency: "€",
 	};
 
 	accounts.push(account);
+	isCreatePopupVisible.value = false;
 }
 </script>
 
