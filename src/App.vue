@@ -68,7 +68,7 @@ main {
 
 	--accent: #f8e39d;
 
-	--font-col-green: #b8f2e6;
+	--font-col-green: #aaebc3;
 	--font-col-red: #ffa69e;
 
 	--font-col: #fff;
