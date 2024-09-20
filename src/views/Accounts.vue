@@ -61,8 +61,14 @@ function createAccountPopupResult(createAccount: boolean, name: string, descript
 		return;
 	}
 
+	let id = 1;
+
+	if (accounts.length > 0) {
+		id = accounts[accounts.length - 1].id + 1;
+	}
+
 	const account = {
-		id: accounts.length + 1,
+		id,
 		name,
 		description,
 		balance: startingBalance,
