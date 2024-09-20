@@ -9,6 +9,16 @@ import DeleteAccountPopup from "../components/accounts/DeleteAccountPopup.vue";
 
 let accounts = [];
 
+// Load accounts from local storage
+try {
+	const accountsJson = localStorage.getItem("accounts");
+	if (accountsJson) {
+		accounts = JSON.parse(accountsJson);
+	}
+} catch (err) {
+	console.error("Failed to load accounts from local storage", err);
+}
+
 let isDeletePopupVisible = ref(false);
 let currentProcessedAccountId = -1;
 
@@ -25,12 +35,15 @@ function deleteAccount(accountId: number) {
 }
 
 function deleteAccountPopupResult(result: boolean) {
-	console.log("Result", result);
+	console.log("Delte account", result);
 	isDeletePopupVisible.value = false;
 	if (result) {
 		accounts = accounts.filter((account) => account.id !== currentProcessedAccountId);
 	}
 	currentProcessedAccountId = -1;
+
+	// Save new accounts array to local storage
+	saveAccounts();
 }
 
 let isCreatePopupVisible = ref(false);
@@ -58,6 +71,13 @@ function createAccountPopupResult(createAccount: boolean, name: string, descript
 
 	accounts.push(account);
 	isCreatePopupVisible.value = false;
+
+	// Save new accounts array to local storage
+	saveAccounts();
+}
+
+function saveAccounts() {
+	localStorage.setItem("accounts", JSON.stringify(accounts));
 }
 </script>
 
