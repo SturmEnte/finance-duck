@@ -66,6 +66,7 @@ main {
 :root {
 	--background-pri: #2a3244;
 	--background-sec: #8ed7e2;
+	--background-sec-darker: #6ca5ad;
 
 	--accent: #f8e39d;
 
