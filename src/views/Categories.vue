@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 import CreateNewCategoryPopup from "../components/categories/CreateNewCategoryPopup.vue";
 
-let categories = new Array<{ name: string; subcategories: string[] }>();
+let categories = new Array<{ id: number; name: string; subcategories: string[] }>();
 
 const isCreateNewCategoryPopupVisible = ref(false);
 
@@ -13,7 +13,12 @@ function showCreateNewCategoryPopup() {
 
 function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 	if (confirmed) {
-		categories.push({ name, subcategories: [] });
+		let id = 1;
+		if (categories.length > 0) {
+			id = categories[categories.length - 1].id + 1;
+		}
+
+		categories.push({ id, name, subcategories: [] });
 	}
 
 	isCreateNewCategoryPopupVisible.value = false;
@@ -22,7 +27,8 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 
 <template>
 	<div id="categories">
-		<div @click="showCreateNewCategoryPopup" class="category" id="createNewCategory">+</div>
+		<div v-for="category in categories" :key="category.id" class="category">{{ category.name }}</div>
+		<div @click="showCreateNewCategoryPopup" id="createNewCategory">+</div>
 	</div>
 
 	<CreateNewCategoryPopup v-if="isCreateNewCategoryPopupVisible" @result="createNewCategoryPopupResult" />
@@ -32,9 +38,14 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 #categories {
 	padding: 20px;
 	box-sizing: border-box;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-direction: row;
 }
 
-.category {
+.category,
+#createNewCategory {
 	width: 250px;
 	height: 50px;
 	border-radius: var(--corner-radius);
@@ -42,12 +53,13 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-weight: 100;
-	font-size: 1.6rem;
+	margin-right: 20px;
 }
 
 #createNewCategory {
 	cursor: pointer;
 	user-select: none;
+	font-weight: 100;
+	font-size: 1.6rem;
 }
 </style>
