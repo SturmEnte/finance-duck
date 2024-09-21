@@ -19,7 +19,7 @@ try {
 	console.error("Failed to load accounts from local storage", err);
 }
 
-let isDeletePopupVisible = ref(false);
+const isDeletePopupVisible = ref(false);
 let currentProcessedAccountId = -1;
 
 function invertScroll(event) {
@@ -46,7 +46,7 @@ function deleteAccountPopupResult(result: boolean) {
 	saveAccounts();
 }
 
-let isCreatePopupVisible = ref(false);
+const isCreatePopupVisible = ref(false);
 
 function openCreateAccountPopup() {
 	console.log("Open create account popup");
