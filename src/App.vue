@@ -7,6 +7,7 @@
 			<nav>
 				<RouterLink to="/">Dashboard</RouterLink>
 				<RouterLink to="/accounts">Accounts</RouterLink>
+				<RouterLink to="/categories">Categories</RouterLink>
 			</nav>
 		</header>
 		<main>
