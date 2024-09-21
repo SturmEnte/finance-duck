@@ -106,9 +106,9 @@ function saveAccounts() {
 	display: flex;
 	justify-content: space-around;
 	align-items: stretch;
-	gap: 20px;
-	padding: 20px;
-	padding-bottom: 10px;
+	gap: var(--margin);
+	padding: var(--margin);
+	padding-bottom: calc(var(--margin) / 2);
 	box-sizing: border-box;
 	overflow-x: auto;
 }
@@ -140,8 +140,8 @@ function saveAccounts() {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 20px;
-	padding-top: 10px;
+	padding: var(--margin);
+	padding-top: calc(var(--margin) / 2);
 	box-sizing: border-box;
 }
 </style>

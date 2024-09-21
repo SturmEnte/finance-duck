@@ -23,7 +23,7 @@ function deleteAccount() {
 <style scoped>
 #container {
 	--delete-button-height: 1rem;
-	--padding: 20px;
+	--padding: var(--margin);
 
 	background: var(--background-sec);
 

@@ -36,7 +36,7 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 
 <style scoped>
 #categories {
-	padding: 20px;
+	padding: var(--margin);
 	box-sizing: border-box;
 	display: flex;
 	align-items: flex-start;
@@ -53,7 +53,7 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-right: 20px;
+	margin-right: var(--margin);
 }
 
 #createNewCategory {

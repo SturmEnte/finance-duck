@@ -28,7 +28,7 @@ header {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 40px;
+	padding: calc(var(--margin) * 2);
 	box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@ nav {
 
 nav * {
 	text-decoration: none;
-	margin-right: 20px;
+	margin-right: var(--margin);
 	color: var(--font-col);
 }
 
@@ -76,6 +76,7 @@ main {
 	--font-col-dark: #868686;
 
 	--corner-radius: 15px;
+	--margin: 20px;
 
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 300;

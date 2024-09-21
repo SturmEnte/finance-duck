@@ -56,7 +56,7 @@ function result(confirmed: boolean) {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding: 20px;
+	padding: var(--margin);
 	box-sizing: border-box;
 }
 
@@ -80,7 +80,7 @@ input {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	margin-top: 20px;
+	margin-top: var(--margin);
 }
 
 button {
