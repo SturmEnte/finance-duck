@@ -29,6 +29,9 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 	<div id="categories">
 		<div v-for="category in categories" :key="category.id" class="category">
 			<div class="category-name">{{ category.name }}</div>
+			<div class="sub-categories">
+				<div class="add-sub-button">+</div>
+			</div>
 		</div>
 		<div @click="showCreateNewCategoryPopup" id="createNewCategory">+</div>
 	</div>
@@ -68,6 +71,22 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.sub-category,
+.add-sub-button {
+	width: 100%;
+	height: var(--category-name-height);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--corner-radius);
+}
+
+.add-sub-button {
+	cursor: pointer;
+	user-select: none;
+	font-size: 1.6rem;
 }
 
 #createNewCategory {
