@@ -3,25 +3,53 @@ import { ref } from "vue";
 
 import CreateNewCategoryPopup from "../components/categories/CreateNewCategoryPopup.vue";
 
-let categories = new Array<{ id: number; name: string; subcategories: string[] }>();
+let categories = new Array<{ id: number; name: string; subcategories: { id: number; name: string }[] }>();
 
 const isCreateNewCategoryPopupVisible = ref(false);
+
+let forCategory: number | undefined;
+
+function initCreateNewCategory() {
+	forCategory = undefined;
+	showCreateNewCategoryPopup();
+}
+
+function initCreateNewSubCategory(categoryId: number) {
+	forCategory = categoryId;
+	showCreateNewCategoryPopup();
+}
 
 function showCreateNewCategoryPopup() {
 	isCreateNewCategoryPopupVisible.value = true;
 }
 
 function createNewCategoryPopupResult(confirmed: boolean, name: string) {
-	if (confirmed) {
-		let id = 1;
-		if (categories.length > 0) {
+	isCreateNewCategoryPopupVisible.value = false;
+
+	if (!confirmed) {
+		return;
+	}
+
+	let id = 1;
+
+	// Create subcategory
+	if (forCategory) {
+		const category = categories.find((c) => c.id === forCategory);
+
+		if (category?.subcategories.length > 0) {
 			id = categories[categories.length - 1].id + 1;
 		}
 
-		categories.push({ id, name, subcategories: [] });
+		category.subcategories.push({ id, name });
+		return;
 	}
 
-	isCreateNewCategoryPopupVisible.value = false;
+	// Create category
+	if (categories.length > 0) {
+		id = categories[categories.length - 1].id + 1;
+	}
+
+	categories.push({ id, name, subcategories: [] });
 }
 </script>
 
@@ -30,10 +58,11 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 		<div v-for="category in categories" :key="category.id" class="category">
 			<div class="category-name">{{ category.name }}</div>
 			<div class="sub-categories">
-				<div class="add-sub-button">+</div>
+				<div v-for="subcategory in category.subcategories" :key="subcategory.id" class="sub-category">{{ subcategory.name }}</div>
+				<div @click="initCreateNewSubCategory(category.id)" class="add-sub-button">+</div>
 			</div>
 		</div>
-		<div @click="showCreateNewCategoryPopup" id="createNewCategory">+</div>
+		<div @click="initCreateNewCategory" id="createNewCategory">+</div>
 	</div>
 
 	<CreateNewCategoryPopup v-if="isCreateNewCategoryPopupVisible" @result="createNewCategoryPopupResult" />
@@ -54,7 +83,6 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 .category {
 	background: var(--background-sec-darker);
 	margin-right: var(--margin);
-	height: 100px;
 }
 
 .category,
