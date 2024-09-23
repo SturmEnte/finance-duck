@@ -5,6 +5,16 @@ import CreateNewCategoryPopup from "../components/categories/CreateNewCategoryPo
 
 let categories = new Array<{ id: number; name: string; subcategories: { id: number; name: string }[] }>();
 
+// Load categories from local storage
+try {
+	const categoriesJson = localStorage.getItem("categories");
+	if (categoriesJson) {
+		categories = JSON.parse(categoriesJson);
+	}
+} catch (err) {
+	console.error("Failed to load categories from local storage", err);
+}
+
 const isCreateNewCategoryPopupVisible = ref(false);
 
 let forCategory: number | undefined;
@@ -32,8 +42,8 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 
 	let id = 1;
 
-	// Create subcategory
 	if (forCategory) {
+		// Create subcategory
 		const category = categories.find((c) => c.id === forCategory);
 
 		if (category?.subcategories.length > 0) {
@@ -41,15 +51,21 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 		}
 
 		category.subcategories.push({ id, name });
-		return;
+	} else {
+		// Create category
+		if (categories.length > 0) {
+			id = categories[categories.length - 1].id + 1;
+		}
+
+		categories.push({ id, name, subcategories: [] });
 	}
 
-	// Create category
-	if (categories.length > 0) {
-		id = categories[categories.length - 1].id + 1;
-	}
+	// Save to local storage
+	saveCategories();
+}
 
-	categories.push({ id, name, subcategories: [] });
+function saveCategories() {
+	localStorage.setItem("categories", JSON.stringify(categories));
 }
 </script>
 
