@@ -6,6 +6,7 @@
 			<div id="title">Finance Duck</div>
 			<nav>
 				<RouterLink to="/">Dashboard</RouterLink>
+				<RouterLink to="/transactions">Transactions</RouterLink>
 				<RouterLink to="/accounts">Accounts</RouterLink>
 				<RouterLink to="/categories">Categories</RouterLink>
 			</nav>
