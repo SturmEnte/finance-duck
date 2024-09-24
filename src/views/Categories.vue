@@ -46,7 +46,13 @@ function createNewCategoryPopupResult(confirmed: boolean, name: string) {
 		// Create subcategory
 		const category = categories.find((c) => c.id === forCategory);
 
-		if (category?.subcategories.length > 0) {
+		if (!category) {
+			console.error("No category found with id", forCategory);
+			console.error("Could not create subcategory", name);
+			return;
+		}
+
+		if (category.subcategories.length > 0) {
 			id = categories[categories.length - 1].id + 1;
 		}
 
