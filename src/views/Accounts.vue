@@ -7,7 +7,13 @@ import AddAccount from "../components/accounts/AddAccount.vue";
 import CreateAccountPopup from "../components/accounts/CreateAccountPopup.vue";
 import DeleteAccountPopup from "../components/accounts/DeleteAccountPopup.vue";
 
-let accounts = [];
+let accounts: {
+	id: number;
+	name: string;
+	description: string;
+	balance: number;
+	currency: string;
+}[] = new Array<{ id: number; name: string; description: string; balance: number; currency: string }>();
 
 // Load accounts from local storage
 try {
@@ -20,9 +26,9 @@ try {
 }
 
 const isDeletePopupVisible = ref(false);
-let currentProcessedAccountId = -1;
+let currentProcessedAccountId: number = -1;
 
-function invertScroll(event) {
+function invertScroll(event: WheelEvent) {
 	event.preventDefault();
 	const accountsElement = document.getElementById("accounts");
 	accountsElement?.scroll({ left: accountsElement.scrollLeft + event.deltaY, behavior: "smooth" });
